@@ -6,21 +6,11 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
 
-    <form action="/login" method="post">
-	<div>
-	<label>Username:</label>
-	<input type="text" name="username"/><br/>
-	</div>
-	<div>
-	<label>Password:</label>
-	<input type="password" name="password"/>
-	</div>
-	<div>
-	<input type="submit" value="Submit"/>
-	</div>
-</form>
-
+    <% if (!user) { %>
+    	<p><a href="/login">Log In</a></p>
+    <% } else { %>
+    	<p><a href="/members">Members Area</a></p>
+    <% } %>
   </body>
 </html>

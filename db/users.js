@@ -1,5 +1,6 @@
 var records = [
-    { id: 1, username: 'winter', password: 'snow'}
+    { id: 1, username: 'winter', password: 'snow'},
+    { id: 2, username: 'admin', password: 'remy87'}
 ];
 
 exports.findById = function(id, cb) {
