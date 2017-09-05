@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hello World</title>
+		<% include partials/head.ejs %>
+	</head>
+
+	<body>
+		<form action="/events" method="post">
+			<div>
+				<label>Your first name:</label>
+				<input type="text" name="leader_name"/><br/>
+			</div>
+			<div>
+				<label>Your last name:</label>
+				<input type="text" name="leader_last_name"/>
+			</div>
+			<div>
+				<label>Event name:</label>
+				<input type="text" name="event_name"/><br/>
+			</div>
+			<div>
+				<label>Description:</label>
+				<input type="text" name="description"/>
+			</div>
+			<div>
+				<label>Location:</label>
+				<input type="text" name="Location"/><br/>
+			</div>
+			<div>
+				<label>Date:</label>
+				<input type="text" name="date"/>
+			</div>
+			<div>
+				<input type="submit" value="Submit"/>
+			</div>
+		</form>
+	</body>
+</html>
