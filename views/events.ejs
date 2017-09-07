@@ -35,5 +35,8 @@
 				<input type="submit" value="Submit"/>
 			</div>
 		</form>
+		<div style="color: red;">
+			<% if(error) sweetAlert("Oops...", "Something went wrong!", "error"); %>
+		</div>
 	</body>
 </html>

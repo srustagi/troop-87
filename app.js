@@ -1,9 +1,12 @@
 /******************************\
 SET DEBUG=troop-87:* & npm start
 \******************************/
-/*****************\
-mongo --dbpath=data
-\*****************/
+/******************\
+mongod --dbpath=data
+\******************/
+/***********************************************\
+C:\Users\shivr\Programming\Sites\Current\troop-87
+\***********************************************/
 
 var express = require('express');
 var passport = require('passport');
@@ -32,10 +35,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 var records = [
-  { id: 1, username: 'winter', password: 'snow' },
-  { id: 2, username: 'admin', password: 'remy87' }
+  { id: 1, username: config.username, password: config.password }
 ];
 var findById = function(id, cb) {
   process.nextTick(function() {
@@ -79,24 +80,19 @@ passport.deserializeUser(function(id, cb) {
 
 //require routes
 var index = require('./routes/index');
-var events = require('./routes/events');
-
+var members = require('./routes/members');
 app.use('/', index);
-app.use('/events', events);
+app.use('/members', members);
 
-// catch 404 error and forward to error handler
+//error handling at the bottom of the pipeline
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
-// error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
   res.status(err.status || 500);
   res.render('error');
 });
