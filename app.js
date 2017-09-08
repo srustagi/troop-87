@@ -9,6 +9,7 @@ C:\Users\shivr\Programming\Sites\Current\troop-87
 \***********************************************/
 
 var express = require('express');
+require('dotenv').config();
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var path = require('path');
@@ -19,8 +20,8 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-var config = require('./config');
-mongoose.connect(config.mongoURI);
+// var config = require('./config');
+mongoose.connect(process.env.DB_URI);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,7 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 var records = [
-  { id: 1, username: config.username, password: config.password }
+  { id: 1, username: process.env.USER, password: process.env.PASS }
 ];
 var findById = function(id, cb) {
   process.nextTick(function() {
