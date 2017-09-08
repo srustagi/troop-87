@@ -6,7 +6,7 @@
 	</head>
 
 	<body>
-		<form action="/events" method="post">
+		<form action="/members/events" method="post">
 			<div>
 				<label>Your first name:</label>
 				<input type="text" name="leader_name"/><br/>
@@ -35,8 +35,7 @@
 				<input type="submit" value="Submit"/>
 			</div>
 		</form>
-		<div style="color: red;">
-			<% if(error) sweetAlert("Oops...", "Something went wrong!", "error"); %>
-		</div>
+		
 	</body>
 </html>
+

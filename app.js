@@ -20,8 +20,11 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-// var config = require('./config');
-mongoose.connect(process.env.DB_URI);
+var options = {
+  user: process.env.DB_USER,
+  pass: process.env.DB_PASS
+}
+mongoose.connect(process.env.DB_URI, {useMongoClient: true});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

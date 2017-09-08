@@ -40,9 +40,9 @@ router.post('/events',
 					input: req.body,
 	    			error: true
     			};
-    			return res.render('login', vm);
+    			return res.render('events', vm);
     		}
-        	res.redirect('/');
+        	res.redirect('/members/');
     	});
     });
 
