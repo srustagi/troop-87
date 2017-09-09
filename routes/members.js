@@ -10,6 +10,7 @@ router.get('/',
 	});
 
 router.get('/login',
+	require('connect-ensure-login').ensureLoggedOut(),
 	function(req, res) {
 		res.render('login');
 	});
@@ -17,7 +18,7 @@ router.get('/login',
 router.post('/login',
 	passport.authenticate('local', { failureRedirect: '/members/login' }),
 	function(req, res) {
-		res.redirect('/');
+		res.redirect('/members');
 	});
 
 router.get('/logout',

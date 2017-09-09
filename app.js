@@ -1,8 +1,3 @@
-/***********************************************\
-SET DEBUG=troop-87:* & npm start
-C:\Users\shivr\Programming\Sites\Current\troop-87
-\***********************************************/
-
 var express = require('express');
 require('dotenv').config();
 var passport = require('passport');
@@ -34,6 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+//messy auth stuff
 var records = [
   { id: 1, username: process.env.USER, password: process.env.PASS }
 ];

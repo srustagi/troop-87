@@ -1,16 +1,69 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/css/styles.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
+	<head>
+		<title>Troop 87 Home</title>
+		<% include partials/head %>
+	</head>
+	<body>
+		<main>
+			<% include partials/nav %>
+			<header id="#top">
+				<h1>Boy Scout Troop 87 Home</h1>
+				<hr />
+				<p><a href="https://goo.gl/maps/6qFDwquqqrK2" target="blank">575 N Shoreline Blvd. Mountain View, CA</a></p>
+			</header>
+			<div class="container">
+				<br />
+				<div class="row">
+					<div class="col s12">
+						<div class="card-panel embed-card" id="scouts">
+							<h4 class="blue lighten-1 white-text">Scouts <i class="fa fa-angle-right fa-fw"></i></h4>
+							<div class="card-wrap">
+								<% if (!user) { %>
+									<a href="/members/login">Log In</a>
+								<% } else { %>
+									<a href="/members">Members Area</a>
+								<% } %>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12">
+						<div class="card-panel embed-card" id="calendar">
+							<h4 class="green accent-3 white-text">Calendar <i class="fa fa-angle-right fa-fw"></i></h4>
+							<div class="card-wrap">
+								<div class="video-container">
+									<iframe class="desktop" src="https://www.google.com/calendar/embed?title=%20%20BSA%20Troop%2087&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=troop87.us%40gmail.com&amp;color=%23182C57&amp;ctz=America%2FLos_Angeles" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
-    <% if (!user) { %>
-    	<p><a href="/members/login">Log In</a></p>
-    <% } else { %>
-    	<p><a href="/members">Members Area</a></p>
-    <% } %>
-  </body>
+									<iframe class="mobile" src="https://calendar.google.com/calendar/embed?showNav=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=troop87.us%40gmail.com&amp;color=%23182C57&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="320" height="400" frameborder="0" scrolling="no"></iframe>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col s12">
+						<div class="card-panel embed-card" id="map">
+							<h4 class="orange lighten-1 white-text">Map <i class="fa fa-angle-right fa-fw"></i></h4>
+							<div class="video-container">
+								<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.4801281187047!2d-122.077336!3d37.40212500000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb74945524a53%3A0xd0450eb09c026eca!2sMountain+View+Buddhist+Temple!5e0!3m2!1sen!2sus!4v1430937649843" frameborder="0" style="border:0" class="map"></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			$( document ).ready(function(){
+				$('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(t){if(location.pathname.replace(/^\//,"")==this.pathname.replace(/^\//,"")&&location.hostname==this.hostname){var e=$(this.hash);(e=e.length?e:$("[name="+this.hash.slice(1)+"]")).length&&(t.preventDefault(),$("html, body").animate({scrollTop:e.offset().top-65},1e3,function(){var t=$(e);if(t.focus(),t.is(":focus"))return!1;t.attr("tabindex","-1"),t.focus()}))}});
+				$('.button-collapse').sideNav({
+					closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+					draggable: true
+				});
+			});
+		</script>
+		<% include partials/footer %>
+	</body>
 </html>

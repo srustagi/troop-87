@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "go": "SET DEBUG=troop-87:* & npm start"
+    "go": "SET DEBUG=troop-87:* & node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
