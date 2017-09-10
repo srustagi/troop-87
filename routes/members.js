@@ -30,21 +30,34 @@ router.get('/logout',
 router.get('/events',
     require('connect-ensure-login').ensureLoggedIn(),
     function(req, res) {
-        res.render('events');
+		event_service.getEvents(function(event_data){
+			var passedVariable = req.query.success || false;
+	    	var vm = {
+	    		success: passedVariable,
+	    		data: event_data
+	    	};
+	        res.render('events', vm);
+		});
     });
 
 router.post('/events',
     function(req, res) {
     	event_service.addEvent(req.body, function(err){
     		if(err){
-    			var vm = {
-					input: req.body,
-	    			error: true
-    			};
-    			return res.render('events', vm);
+    			return res.redirect('/members/events');
     		}
-        	res.redirect('/members/');
+        	event_service.getEvents(function(event_data){
+		        res.redirect('/members/events?success='+encodeURIComponent('true'));
+			});
     	});
     });
+
+router.get('/event/:id',
+	require('connect-ensure-login').ensureLoggedIn(),
+	function(req, res){
+		event_service.getEvent(req.params.id, function(event_data){
+	        res.send(event_data[0]);
+		});
+	});
 
 module.exports = router;

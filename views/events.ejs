@@ -1,41 +1,133 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Hello World</title>
+		<title>Events</title>
 		<% include partials/head.ejs %>
 	</head>
 
 	<body>
-		<form action="/members/events" method="post">
-			<div>
-				<label>Your first name:</label>
-				<input type="text" name="leader_name"/><br/>
-			</div>
-			<div>
-				<label>Your last name:</label>
-				<input type="text" name="leader_last_name"/>
-			</div>
-			<div>
-				<label>Event name:</label>
-				<input type="text" name="event_name"/><br/>
-			</div>
-			<div>
-				<label>Description:</label>
-				<input type="text" name="description"/>
-			</div>
-			<div>
-				<label>Location:</label>
-				<input type="text" name="Location"/><br/>
-			</div>
-			<div>
-				<label>Date:</label>
-				<input type="text" name="date"/>
-			</div>
-			<div>
-				<input type="submit" value="Submit"/>
-			</div>
-		</form>
+		<% include partials/nav %>
 		
+		<main>
+			<div class="container">
+				<div class="card-panel embed-card" id="map">
+					<h4 class="purple darken-1 white-text">Current Events <i class="fa fa-angle-right fa-fw"></i></h4>
+						<ul class="collection" style="margin-top: 0;">
+							<% for(var i = 0; i<data.length; i++){ %>
+								<li class="collection-item avatar">
+									<a href="/members/event/<%= data[i]._id %>"><i class="material-icons circle purple darken-1">open_in_new</i></a>
+									<div class="row">
+										<div class="word-wrap col s12 l3">
+											<p><a href="/members/event/<%= data[i]._id %>"><%= data[i].event_name %></a><br /><%= data[i].description %></p>
+										</div>
+										<div class="word-wrap col s12 l3">
+											<p><%= data[i].firstname %> <%= data[i].lastname %><br /><%= data[i].contact %></p>
+										</div>
+										<div class="word-wrap col s12 l3">
+											<p><a href="http://maps.google.com/?q=<%= data[i].location %>" target="_blank"><%= data[i].location %></a></p>
+										</div>
+										<div class="word-wrap col s12 l3">
+											<p><%= data[i].startdate %></p>
+										</div>
+									</div>
+								</li>
+							<% } %>
+						</ul>
+				</div>
+				
+				<br />
+				<h4>Create an event:</h4>
+				<form action="/members/events" method="post">
+					<div class="row">
+						<div class="input-field col s12 m6">
+						  <input type="text" name="fname" required>
+						  <label>Your First Name</label>
+						</div>
+						<div class="input-field col s12 m6">
+						  <input type="text" name="lname" required>
+						  <label>Your Last Name</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12 m6">
+						  <input type="email" name="email" required>
+						  <label>Your Email</label>
+						</div>
+						<div class="input-field col s12 m6">
+						  <input type="text" name="name" required>
+						  <label>Event Name</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+						  <textarea class="materialize-textarea" name="description"></textarea>
+						  <label>Description</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+						  <input placeholder="" id="location" name="location" type="text">
+						  <label>Location</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12 m3">
+						  <input placeholder="Start Date" class="datepicker" name="sdate" type="text">
+						  <label></label>
+						</div>
+						<div class="input-field col s12 m3">
+						  <input placeholder="End Date" class="datepicker" name="edate" type="text">
+						  <label></label>
+						</div>
+						<div class="input-field col s12 m3">
+						  <input placeholder="Start Time" class="timepicker" name="stime" type="text">
+						  <label></label>
+						</div>
+						<div class="input-field col s12 m3">
+						  <input placeholder="End Time" class="timepicker" name="etime" type="text">
+						  <label></label>
+						</div>
+					</div>
+					<div>
+						<button class="btn purple darken-1 waves-effect waves-light" type="submit" name="action">Create Event
+							<i class="material-icons right">send</i>
+						</button>
+					</div>
+				</form>
+				<br />
+			</div>
+		</main>
+		<br />
+		<% include partials/footer %>
+		<script>
+			$(function(){
+				$('.datepicker').pickadate({
+					selectMonths: true, // Creates a dropdown to control month
+					selectYears: 5, // Creates a dropdown of 15 years to control year,
+					today: 'Today',
+					clear: 'Clear',
+					close: 'Ok',
+					closeOnSelect: false // Close upon selecting a date,
+				});
+				$('.timepicker').pickatime({
+					default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+					fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+					twelvehour: true, // Use AM/PM or 24-hour format
+					donetext: 'OK', // text for done-button
+					cleartext: 'Clear', // text for clear-button
+					canceltext: 'Cancel', // Text for cancel-button
+					autoclose: false, // automatic close timepicker
+					ampmclickable: true, // make AM PM clickable
+					// aftershow: function(){} //Function for after opening timepicker
+				});
+				$("#location").geocomplete();
+				if(<%=success%> == true){
+					Materialize.toast('Event created!', 2000);
+				}
+			});
+		</script>
+		<script src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCskBQy7aj62zdYV23LT8_KFTGWIaymmyQ"></script>
+		<script src="https://cdn.rawgit.com/ubilabs/geocomplete/85b13a0e/jquery.geocomplete.min.js"></script>
 	</body>
 </html>
 

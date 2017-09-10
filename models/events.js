@@ -2,12 +2,17 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var eventSchema = new Schema({
-	leader_name: String,
-	leader_last_name: String,
+	firstname: String,
+	lastname: String,
+	contact: String,
 	event_name: String,
 	description: String,
 	location: String,
-	date: String
+	startdate: String,
+	enddate: String,
+	starttime: String,
+	endtime: String,
+	updated: Date
 });
 
 var Events = mongoose.model('Events', eventSchema);
