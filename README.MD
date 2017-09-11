@@ -1,2 +1,2 @@
 # troop-87
-Troop 87's New Website
+This is a Boy Scout Troop Website. It contains a home page with 
