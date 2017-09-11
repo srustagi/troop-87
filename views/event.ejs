@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Events</title>
+		<% include partials/head.ejs %>
+	</head>
+
+	<body>
+		<% include partials/nav %>
+		
+		<main>
+			<div class="container">
+				<div class="card-panel embed-card" id="map">
+					<h4 class="purple darken-1 white-text">
+						Signups
+						<span class="right">
+							<h6 style="margin-top: 11px;">Total Car Capacity: <% var total=0;for(var i=0;i<data.people.length;i++){total=total+data.people[i].vehiclecapacity;} %><strong><%= total %></strong></h6>
+						</span>
+					</h4>
+					<ul class="collection" style="margin-top: 0;">
+						<li class="collection-item desktop">
+							<div class="row" style="margin-bottom: 0;">
+								<div class="word-wrap col s12 l3">
+									Name
+								</div>
+								<div class="word-wrap col s12 l3">
+									Comment
+								</div>
+								<div class="word-wrap col s12 l3">
+									Adult
+								</div>
+								<div class="word-wrap col s12 l3">
+									Car Capacity
+								</div>
+							</div>
+						</li>
+						<% for(var i = 0; i<data.people.length; i++){ %>
+							<li class="collection-item">
+								<div class="row" style="margin-bottom: 0;">
+									<div class="word-wrap col s12 l3">
+										<%= data.people[i].firstname %> <%= data.people[i].lastname %>
+									</div>
+									<div class="word-wrap col s12 l3">
+										<%= data.people[i].comment %>
+									</div>
+									<div class="word-wrap col s12 l3">
+										<%= data.people[i].adult %>
+									</div>
+									<div class="word-wrap col s12 l3">
+										<%= data.people[i].vehiclecapacity %>
+									</div>
+								</div>
+							</li>
+						<% } %>
+					</ul>
+				</div>
+				<div class="card-panel embed-card" id="map">
+					<h4 class="red white-text">
+						Remove
+					</h4>
+					<div class="row" style="margin-bottom: 0;">
+						<div class="col s10 offset-s1 l6 offset-l3">
+							<br />
+							<form action="/members/event/delete" method="post">
+								<select name="user_fname" required>
+								    <option value="" disabled selected>Select</option>
+								    <% for(var i=0; i<data.people.length; i++) { %>
+								    	<option value="<%= data.people[i]._id %>"><%= data.people[i].firstname %> <%= data.people[i].lastname %></option>
+								    <% } %>						    
+							    </select>
+							    <input type="hidden" value="<%= data._id %>" name="event" />
+							    <button class="btn red waves-effect waves-light" type="submit">Remove
+									<i class="material-icons right">remove_circle_outline</i>
+								</button>
+							</form>
+							<br />
+						</div>
+					</div>
+				</div>
+				<br />
+				<h4>Sign up:</h4>
+				<form action="/members/event" method="post">
+					<div class="row">
+						<div class="input-field col s12 m6">
+						  <input type="text" name="fname" required>
+						  <label>Your First Name (Required)</label>
+						</div>
+						<div class="input-field col s12 m6">
+						  <input type="text" name="lname" required>
+						  <label>Your Last Name (Required)</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12 m6">
+						    <select name="adult">
+							    <option value="" disabled selected>Select</option>
+							    <option style="color: #8324aa !important;" value="Yes">Yes</option>
+							    <option style="color: #8324aa !important;" value="No">No</option>
+						    </select>
+						    <label>Adult</label>
+						</div>
+						<div class="input-field col s12 m6">
+						  <input type="number" min="2" max="8" name="capacity">
+						  <label>Vehicle Capacity</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+						  <textarea class="materialize-textarea" name="person"></textarea>
+						  <label>Comment</label>
+						</div>
+					</div>
+					<input type="hidden" name="id" value="<%= id %>">
+					<div>
+						<button class="btn purple darken-1 waves-effect waves-light" type="submit">Signup
+							<i class="material-icons right">send</i>
+						</button>
+					</div>
+				</form>
+				<br />
+			</div>
+		</main>
+
+		<br />
+		<script>
+			$(document).ready(function() {
+			    $('select').material_select();
+			    if(<%=success%> == true){
+					Materialize.toast('You are signed up!', 2000);
+				}
+				if(<%=delete_success%> == true){
+					Materialize.toast('Delete successful!', 2000);
+				}
+				$('.button-collapse').sideNav({
+					closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+					draggable: true
+				});
+			});
+		</script>
+		<% include partials/footer %>
+	</body>
+</html>
+

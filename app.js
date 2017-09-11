@@ -10,10 +10,6 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-var options = {
-  user: process.env.DB_USER,
-  pass: process.env.DB_PASS
-}
 mongoose.connect(process.env.DB_URI, {useMongoClient: true});
 
 // view engine setup
@@ -32,7 +28,8 @@ app.use(passport.session());
 
 //messy auth stuff
 var records = [
-  { id: 1, username: process.env.USER, password: process.env.PASS }
+  { id: 1, username: process.env.USER, password: process.env.PASS, admin: false },
+  { id: 1, username: process.env.ADMIN, password: process.env.ADMIN_PASSWORD, admin: true }
 ];
 var findById = function(id, cb) {
   process.nextTick(function() {

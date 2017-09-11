@@ -25,6 +25,14 @@ input[type]:focus + label, textarea:focus + label  {
     color: #8324aa !important;
 }
 
+select option{
+	color: #8324aa !important;
+}
+
+option  {
+    color: #8324aa !important;
+}
+
 h1 {
     padding-top: 0 !important;
     margin-top: 0 !important;
@@ -33,15 +41,36 @@ h1 {
 header{
 	@media screen and (min-width: 300px){
 		height: 200px;
+		hr{
+			width: 85%;
+	   		border: 2px solid rgba(255, 255, 255, 1.0);
+	   		border-radius: 20px;
+		}
+		h1{
+			font-family: 'Raleway', sans-serif;
+			font-size: 24px;
+		}
+		p{
+			font-family: 'Roboto Condensed', sans-serif;
+			font-size: 16px;
+		}
+		a{
+			color: white;
+			text-decoration: underline;
+		}
 	}
 	@media screen and (min-width: 720px){
-		height: 300px;
-	}
-	@media screen and (min-width: 1080px){
-		height: 400px;
-	}
-	@media screen and (min-width: 1200px){
 		height: 500px;
+		hr{
+			width: 75%;
+	   		border: 3px solid rgba(255, 255, 255, 1.0);
+		}
+		h1{
+			font-size: 32px;
+		}
+		p{
+			font-size: 20px;
+		}
 	}
 	margin-top: -23px;
 	background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('../img/bg-min.jpg');
@@ -55,22 +84,6 @@ header{
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	hr{
-		width: 75%;
-   		border: 2px solid rgba(255, 255, 255, 1.0);
-    	border-radius: 20px;
-	}
-	h1{
-		font-family: 'Raleway', sans-serif;
-	}
-	a{
-		color: white;
-		text-decoration: underline;
-	}
-	p{
-		font-family: 'Roboto Condensed', sans-serif;
-		font-size: 20px;
-	}
 }
 
 .video-container{
@@ -90,9 +103,9 @@ header{
 
 .mobile{
 	@media screen and (min-width: 300px){
-		display: inline;
+		display: block;
 	}
-	@media screen and (min-width: 1080px){
+	@media screen and (min-width: 720px){
 		display: none;
 	}
 }
@@ -101,8 +114,8 @@ header{
 	@media screen and (min-width: 300px){
 		display: none;
 	}
-	@media screen and (min-width: 1080px){
-		display: inline;
+	@media screen and (min-width: 720px){
+		display: block;
 	}
 }
 
@@ -126,4 +139,22 @@ header{
 
 .word-wrap{
 	word-wrap: break-word;
+}
+
+.scout-links{
+	padding: 25px;
+	font-size: 20px;
+	margin-bottom: 0px;
+	a{
+		color: black !important;
+	}
+}
+
+#link-block{
+	margin-bottom: 0px;
+	padding-bottom: 0;
+}
+
+.stupid:active{
+	text-decoration: none;
 }

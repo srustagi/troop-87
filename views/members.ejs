@@ -1,11 +1,97 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-	<% include partials/head.ejs %>
-</head>
-<body>
-	<p><a href="/members/logout">Log out</a></p>
-	<p><a href="/members/events">Events</a></p>
-</body>
+	<head>
+		<title>Troop 87 Members Area</title>
+		<% include partials/head %>
+	</head>
+	<body>
+		<main>
+			<% include partials/nav %>
+			<header id="#top">
+				<h1>Boy Scout Troop 87 Members Area</h1>
+				<hr />
+				<p><a href="https://goo.gl/maps/6qFDwquqqrK2" target="blank">575 N Shoreline Blvd. Mountain View, CA</a></p>
+			</header>
+			<div class="container">
+				<br />
+				<div class="row">
+					<div class="col s12">
+						<div class="card-panel embed-card" id="scouts">
+							<h4 class="red white-text">Sign up for the e-group <i class="fa fa-angle-right fa-fw"></i></h4>
+							<div class="scout-links">
+								<div class="row" id="link-block">
+									<div class="col s12 m6">
+										<i class="fa fa-fw fa-yahoo"></i>&nbsp;&nbsp;<a href="/members/events">Visit the group</a><br /><br />
+									</div>
+									<div class="col s12 m6">
+										<i class="fa fa-fw fa-pencil"></i>&nbsp;&nbsp;<a href="/members/events">Post in the group</a><br /><br />
+									</div>
+									<div class="col s12 m6">
+										<i class="fa fa-fw fa-user-circle-o"></i>&nbsp;&nbsp;<a href="/members/events">Subscribe</a><br /><br />
+									</div>
+									<div class="col s12 m6">
+										<i class="fa fa-fw fa-times-circle-o"></i>&nbsp;&nbsp;<a href="/members/events">Unsubscribe</a><br /><br />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>				
+				</div>
+				<div class="row">
+					<div class="col s12">
+						<div class="card-panel embed-card" id="scouts">
+							<h4 class="blue lighten-1 white-text">Scouts <i class="fa fa-angle-right fa-fw"></i></h4>
+							<div class="scout-links">
+								<div class="row" id="link-block">
+									<div class="col s12 m6">
+										<i class="fa fa-fw fa-calendar"></i>&nbsp;&nbsp;<a href="/members/events">Events</a><br /><br />
+									</div>
+									<div class="col s12 m6">
+										<i class="fa fa-fw fa-times-circle-o"></i>&nbsp;&nbsp;<a href="/members/logout">Log Out</a><br /><br />
+									</div>
+									<div class="col s12 m6">
+										<i class="fa fa-fw fa-pencil"></i>&nbsp;&nbsp;<a href="/#">Troop Facebook Group</a><br /><br />
+									</div>
+									<div class="col s12 m6">
+										<i class="fa fa-fw fa-gear"></i>&nbsp;&nbsp;<a href="/#">Troop Twitter</a><br /><br />
+									</div>
+									<div class="col s12 m6">
+										<i class="fa fa-fw fa-list-ol"></i>&nbsp;&nbsp;<a href="/#">Troop Shutterfly</a><br /><br />
+									</div>
+									<div class="col s12 m6">
+										<i class="fa fa-fw fa-list"></i>&nbsp;&nbsp;<a href="/#">Scout Roster</a><br /><br />
+									</div>
+									<div class="col s12 m6">
+										<i class="fa fa-fw fa-user"></i>&nbsp;&nbsp;<a href="/#">Adult Roster</a><br /><br />
+									</div>
+									<div class="col s12 m6">
+										<i class="fa fa-fw fa-ambulance"></i>&nbsp;&nbsp;<a href="/#">Eagle Alumni Roster</a><br /><br />
+									</div>
+									<div class="col s12 m6">
+										<i class="fa fa-fw fa-calendar"></i>&nbsp;&nbsp;<a href="/#">Adult Leader Alumni</a><br /><br />
+									</div>
+									<div class="col s12 m6">
+										<i class="fa fa-fw fa-info"></i>&nbsp;&nbsp;<a href="/#">Troop Phone Tree</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			$( document ).ready(function(){
+				$('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(t){if(location.pathname.replace(/^\//,"")==this.pathname.replace(/^\//,"")&&location.hostname==this.hostname){var e=$(this.hash);(e=e.length?e:$("[name="+this.hash.slice(1)+"]")).length&&(t.preventDefault(),$("html, body").animate({scrollTop:e.offset().top-65},1e3,function(){var t=$(e);if(t.focus(),t.is(":focus"))return!1;t.attr("tabindex","-1"),t.focus()}))}});
+				$('.button-collapse').sideNav({
+					closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+					draggable: true
+				});
+				if(<%=success%> == true){
+					Materialize.toast('Contact update request submitted!', 2000);
+				}
+			});
+		</script>
+		<% include partials/footer %>
+	</body>
 </html>

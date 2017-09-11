@@ -7,4 +7,9 @@ router.get('/',
 		res.render('index', { title: 'Express', user: req.user });
 	});
 
+router.get('/error',
+	function(req, res, next) {
+		next();
+	});
+
 module.exports = router;

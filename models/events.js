@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var People = require('./person');
 
 var eventSchema = new Schema({
 	firstname: String,
@@ -12,6 +13,7 @@ var eventSchema = new Schema({
 	enddate: String,
 	starttime: String,
 	endtime: String,
+	people: [People.Schema],
 	updated: Date
 });
 
