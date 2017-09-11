@@ -13,7 +13,7 @@ var transporter = nodemailer.createTransport({
 });
 
 router.get('/',
-	require('connect-ensure-login').ensureLoggedIn({ redirectTo: '/members/login'}),
+	require('connect-ensure-login').ensureLoggedIn({redirectTo: '/members/login'}),
 	function(req, res) {
 		var passedVariable = req.query.success || false;
     	var vm = {
@@ -35,7 +35,7 @@ router.post('/login',
 	});
 
 router.post('/update-contact',
-	require('connect-ensure-login').ensureLoggedIn({ redirectTo: '/members/login'}),
+	require('connect-ensure-login').ensureLoggedIn({redirectTo: '/members/login'}),
 	function(req, res){
 		var mailOptions = {
 		  from: 'troop87.us@gmail.com',
@@ -55,7 +55,7 @@ router.post('/update-contact',
 	});
 
 router.get('/events',
-    require('connect-ensure-login').ensureLoggedIn({ redirectTo: '/members/login'}),
+    require('connect-ensure-login').ensureLoggedIn({redirectTo: '/members/login'}),
     function(req, res) {
 		event_service.getEvents(function(event_data){
 			var passedVariable = req.query.success || false;
@@ -82,7 +82,7 @@ router.post('/events',
     });
 
 router.get('/event/',
-	require('connect-ensure-login').ensureLoggedIn({ redirectTo: '/members/login'}),
+	require('connect-ensure-login').ensureLoggedIn({redirectTo: '/members/login'}),
 	function(req, res){
 		if(!req.query.id){
 			return res.redirect('/members/events');
