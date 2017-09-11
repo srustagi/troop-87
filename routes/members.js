@@ -37,12 +37,11 @@ router.post('/login',
 router.post('/update-contact',
 	require('connect-ensure-login').ensureLoggedIn(),
 	function(req, res){
-		var email = req.body;
 		var mailOptions = {
 		  from: 'troop87.us@gmail.com',
 		  to: 'shivrustagi221@gmail.com',
 		  subject: 'Contact form update request',
-		  text: email
+		  text: 'HI'
 		};
 
 		transporter.sendMail(mailOptions, function(error, info){
@@ -52,7 +51,7 @@ router.post('/update-contact',
 		    console.log('Email sent: ' + info.response);
 		  }
 		});
-		res.redirect('/members/events?success='+encodeURIComponent('true'));
+		res.redirect('/members/?success='+encodeURIComponent('true'));
 	});
 
 router.get('/events',

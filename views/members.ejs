@@ -78,10 +78,47 @@
 						</div>
 					</div>
 				</div>
+				<div class="card-panel embed-card">
+					<h4 class="green accent-3 white-text">
+						Update your contact information
+					</h4>
+					<div class="row" style="margin-bottom: 0;">
+						<div class="col s10 offset-s1 l8 offset-l2">
+							<br />
+							<form action="/members/update-contact" method="post">
+								<div class="row">
+									<div class="col s6">
+										<input class="with-gap" name="group3" type="radio" id="adult" />
+									    <label for="adult">Red</label>
+									</div>
+									<div class="col s6">
+										<input class="with-gap" name="group3" type="radio" id="scout" />
+									    <label for="scout">Red</label>
+									</div>
+								</div>
+							    <button class="btn green accent-3 waves-effect waves-light" type="submit">Update
+									<i class="material-icons right">send</i>
+								</button>
+							</form>
+							<br />
+						</div>
+					</div>
+				</div>
+
 			</div>
 		</main>
 		<script>
 			$( document ).ready(function(){
+				function displayForm(c) {
+				    if (c.value == "2") {    
+				        jQuery('#paypalformContainer').toggle('show');
+				        jQuery('#ccformContainer').hide();
+				    }
+				        if (c.value == "1") {
+				         jQuery('#ccformContainer').toggle('show');
+				         jQuery('#paypalformContainer').hide();
+				    }
+				};
 				$('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(t){if(location.pathname.replace(/^\//,"")==this.pathname.replace(/^\//,"")&&location.hostname==this.hostname){var e=$(this.hash);(e=e.length?e:$("[name="+this.hash.slice(1)+"]")).length&&(t.preventDefault(),$("html, body").animate({scrollTop:e.offset().top-65},1e3,function(){var t=$(e);if(t.focus(),t.is(":focus"))return!1;t.attr("tabindex","-1"),t.focus()}))}});
 				$('.button-collapse').sideNav({
 					closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
