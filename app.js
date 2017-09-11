@@ -9,8 +9,21 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var app = express();
-
-mongoose.connect(process.env.DB_URI, {useMongoClient: true});
+var options = { 
+  server: { 
+    socketOptions: { 
+      keepAlive: 300000, connectTimeoutMS: 30000 
+    } 
+  }, 
+  replset: { 
+    socketOptions: { 
+      keepAlive: 300000, 
+      connectTimeoutMS : 30000 
+    } 
+  },
+  useMongoClient: true
+};
+mongoose.connect(process.env.DB_URI, options);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
