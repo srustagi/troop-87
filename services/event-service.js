@@ -1,5 +1,7 @@
 var Events = require('../models/events').Events;
+var OldEvent = require('../models/events').OldEvent;
 var People = require('../models/person');
+
 
 module.exports.addEvent = function(event, next){
 	var newEvent = new Events({
@@ -51,6 +53,12 @@ module.exports.deleteUser = function(event_id, user_id, callback){
 };
 
 module.exports.deleteEvent = function(event_id, callback){
+	// Event.findOne({ _id: event_id }, function(err, result) {
+	// 	console.log(result);
+	//     let swap = new OldEvent(result)
+	//     result.remove();
+	//     swap.save();
+	// });
 	Events.find({ _id: event_id }).remove().exec();
 };
 
