@@ -1,6 +1,9 @@
 {
   "name": "troop-87",
   "version": "0.0.0",
+  "description": "Boy Scout Troop 87's website.",
+  "keywords": ["boy scout troop", "mongodb", "sign up sheet"],
+  "bugs": { "url" : "https://github.com/owner/project/issues", "email" : "project@hostname.com"}
   "private": true,
   "scripts": {
     "go": "SET DEBUG=troop-87:* & node ./bin/www"

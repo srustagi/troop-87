@@ -2,13 +2,22 @@
 <html>
 	<head>
 		<title><%= error.status %></title>
-		<% include partials/head.ejs %>
+		<% include partials/head %>
 	</head>
-
 	<body>
-		<h1><%= error.status %></h1>
-		<h3><%= message %></h3>
+		<% include partials/nav %>
+		<main>
+			<div class="container">
+				<div class="card-panel">
+					<center>
+						<h1><%= error.status || 404 %></h1>
+						<h5>Page not found</h5>
+					</center>
+				</div>
+			</div>
+		</main>
+		<% include partials/footer %>
 	</body>
 </html>
 
-<!-- <code><%= error.stack %></code> -->
+<!-- <code><%= error.stack %><%= message %></code> -->
