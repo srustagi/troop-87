@@ -1,2 +1,2 @@
 # troop-87
-This is a Boy Scout Troop Website. It contains a home page with 
+This is a Boy Scout Troop Website. It contains a home page with a calendar, map embed, and cards with links for the scouts. Fully responsive, built with [Materialize.css](materializecss.com).
