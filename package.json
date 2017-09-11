@@ -11,7 +11,7 @@
   "author": "Shivansh Rustagi",
   "repository": {"type": "git", "url": "https://github.com/srustagi/troop-87.git"},
   "scripts": {
-    "start": "SET DEBUG=troop-87:* & node ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
