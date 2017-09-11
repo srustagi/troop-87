@@ -6,7 +6,7 @@
     "npm": "3.10.10"
   },
   "description": "Boy Scout Troop 87's website.",
-  "keywords": ["boy scout troop", "mongodb", "sign up sheet"],
+  "keywords": ["boy scout troop", "troop 87"],
   "bugs": { "url": "https://github.com/srustagi/troop-87/issues", "email": "rustagi.shiv@gmail.com"},
   "license": "MIT",
   "author": "Shivansh Rustagi",
