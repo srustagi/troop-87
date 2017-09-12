@@ -18,9 +18,7 @@ mongoose.connect(process.env.DB_URI, options);
 
 var conn = mongoose.connection;             
 conn.on('error', console.error.bind(console, 'connection error:'));  
-conn.once('open', function() {
-  // Wait for the database connection to establish, then start the app.                         
-});
+conn.once('open', function() {});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
