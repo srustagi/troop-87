@@ -63,7 +63,7 @@
 							<br />
 							<form action="/members/event/delete" method="post">
 								<select name="user_fname" required>
-								    <option value="" disabled selected>Select</option>
+								    <option value="" selected>Select</option>
 								    <% for(var i=0; i<data.people.length; i++) { %>
 								    	<option value="<%= data.people[i]._id %>"><%= data.people[i].firstname %> <%= data.people[i].lastname %></option>
 								    <% } %>						    

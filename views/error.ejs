@@ -11,7 +11,7 @@
 				<div class="card-panel">
 					<center>
 						<h1><%= error.status || 404 %></h1>
-						<h5>Page not found</h5>
+						<h5><%= message || "Page not found" %></h5>
 					</center>
 				</div>
 			</div>
@@ -20,4 +20,4 @@
 	</body>
 </html>
 
-<!-- <code><%= error.stack %><%= message %></code> -->
+<!-- <code><%= error.stack %></code> -->

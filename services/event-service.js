@@ -37,7 +37,7 @@ module.exports.addPerson = function(id, person, callback){
 	});
  	Events.findOneAndUpdate({_id: id}, {$push: {people: newPerson}}, {new: true}, function(err){
 	    if(err){
-	        console.log(err);
+	        return next(err);
 	    }
 	});
 };
@@ -48,10 +48,12 @@ module.exports.deleteUser = function(event_id, user_id, callback){
         { $pull: { people : { _id : user_id } } },
         { safe: true },
         function(err) {
-        	if(err) console.log(err);
-    });
+        	if(err) next(err);
+    	}
+    );
 };
 
+//TODO: change delete to swap
 module.exports.deleteEvent = function(event_id, callback){
 	// Event.findOne({ _id: event_id }, function(err, result) {
 	// 	console.log(result);
@@ -62,16 +64,18 @@ module.exports.deleteEvent = function(event_id, callback){
 	Events.find({ _id: event_id }).remove().exec();
 };
 
+//TODO: figure out next() call
 module.exports.getEvents = function(callback){
 	Events.find(function(err, events){
 		if(err){
-			console.log(err);
+			next(err);
 		} else {
 			callback(events);
 		}
 	});
 };
 
+//TODO: figure out next() call
 module.exports.getEvent = function(id, callback){
 	Events.find({'_id': id}, function(err, event){
 		if(err){
