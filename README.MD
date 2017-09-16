@@ -14,5 +14,8 @@ This is a Boy Scout Troop Website. It contains a home page with a calendar, map 
   - `PORT` — the port the application is to run on
   - `SECRET` — a `String` which you'll use as your secret for the session
 
+### Run
+Run this project with `npm start`
+
 ### Customization
 This frontend for this project is done with Materialize.css, and you can find the reference at [their site](http://materializecss.com).
