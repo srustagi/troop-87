@@ -64,7 +64,7 @@ module.exports.deleteEvent = function(event_id, callback){
 	Events.find({ _id: event_id }).remove().exec();
 };
 
-//TODO: figure out next() call
+//TODO: next() call
 module.exports.getEvents = function(callback){
 	Events.find(function(err, events){
 		if(err){
@@ -75,7 +75,7 @@ module.exports.getEvents = function(callback){
 	});
 };
 
-//TODO: figure out next() call
+//TODO: next() call
 module.exports.getEvent = function(id, callback){
 	Events.find({'_id': id}, function(err, event){
 		if(err){

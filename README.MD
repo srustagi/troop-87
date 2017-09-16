@@ -12,6 +12,7 @@ This is a Boy Scout Troop Website. It contains a home page with a calendar, map 
   - `USER` — the username for your members area
   - `PASS` — the password for your members area
   - `PORT` — the port the application is to run on
+  - `SECRET` — a `String` which you'll use as your secret for the session
 
 ### Customization
 This frontend for this project is done with Materialize.css, and you can find the reference at [their site](http://materializecss.com).
