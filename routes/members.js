@@ -34,11 +34,73 @@ router.post('/login',
 router.post('/update-contact',
 	require('connect-ensure-login').ensureLoggedIn({redirectTo: '/members/login'}),
 	function(req, res){
+		var fname = req.body.first_name || req.body.a_first_name;
+		var lname = req.body.last_name || req.body.a_last_name;
+		var message = "Hi!\n\n" + fname + " " + lname + " has requested an update to their contact information.\n\n";
+		if(req.body.phone){
+			message = message + "\tPhone: " + req.body.phone + "\n";
+		}
+		if(req.body.email){
+			message = message + "\tEmail: " + req.body.email + "\n";
+		}
+		if(req.body.address){
+			message = message + "\tAddress: " + req.body.address + "\n";
+		}
+		
+		if(req.body.p_first_name){
+			message = message + "\tParent 1 First Name: " + req.body.p_first_name + "\n";
+		}
+		if(req.body.p_last_name){
+			message = message + "\tParent 1 Last Name: " + req.body.p_last_name + "\n";
+		}
+		if(req.body.p_phone){
+			message = message + "\tParent 1 Phone: " + req.body.p_phone + "\n";
+		}
+		if(req.body.p_phone_2){
+			message = message + "\tParent 1 Alternate Phone: " + req.body.p_phone_2 + "\n";
+		}
+		if(req.body.p_email){
+			message = message + "\tParent 1 Email: " + req.body.p_email + "\n";
+		}
+		if(req.body.p_address){
+			message = message + "\tParent 1 Address: " + req.body.p_address + "\n";
+		}
+
+		if(req.body.p2_first_name){
+			message = message + "\tParent 2 First Name: " + req.body.p2_first_name + "\n";
+		}
+		if(req.body.p2_last_name){
+			message = message + "\tParent 2 Last Name: " + req.body.p2_last_name + "\n";
+		}
+		if(req.body.p2_phone){
+			message = message + "\tParent 2 Phone: " + req.body.p2_phone + "\n";
+		}
+		if(req.body.p2_phone_2){
+			message = message + "\tParent 2 Alternate Phone: " + req.body.p2_phone_2 + "\n";
+		}
+		if(req.body.p2_email){
+			message = message + "\tParent 2 Email: " + req.body.p2_email + "\n";
+		}
+		if(req.body.p2_address){
+			message = message + "\tParent 2 Address: " + req.body.p2_address + "\n";
+		}
+		
+		if(req.body.a_phone){
+			message = message + "\tPhone: " + req.body.a_phone + "\n";
+		}
+		if(req.body.a_email){
+			message = message + "\tEmail: " + req.body.a_email + "\n";
+		}
+		if(req.body.a_address){
+			message = message + "\tAddress: " + req.body.a_address + "\n";
+		}
+		message = message + "\nThanks!";
+
 		var mailOptions = {
 		  from: 'troop87.us@gmail.com',
 		  to: 'shivrustagi221@gmail.com',
 		  subject: 'Contact form update request',
-		  text: 'HI'
+		  text: message
 		};
 
 		transporter.sendMail(mailOptions, function(error, info){
